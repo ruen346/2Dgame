@@ -19,6 +19,16 @@ def move_x(x):
             delay(0.002)
             frame = (frame+1) % 8
             get_events()
+            
+    elif (ch_x >= x):
+        while ch_x > x:
+            clear_canvas()
+            character.clip_draw(frame * 100, 0, 100, 100, x, ch_y)
+            update_canvas()
+            x -= 1
+            delay(0.002)
+            frame = (frame + 1) % 8
+            get_events()
 
 def move_y(y):
     pass
