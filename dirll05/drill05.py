@@ -6,7 +6,25 @@ grass = load_image('grass.png')
 character = load_image('animation_sheet.png')
 
 def make_character(x, y, ch_x, ch_y):
-    pass
+    frame = 0
+
+
+    go_x = (x - ch_x) / 10
+    go_y = (y - ch_y) / 10
+
+    for i in range(0,10):
+        clear_canvas()
+        if (ch_x < x):
+            character.clip_draw(frame * 100, 100, 100, 100, ch_x, ch_y)
+        else:
+            character.clip_draw(frame * 100, 0, 100, 100, ch_x, ch_y)
+        ch_x += go_x
+        ch_y += go_y
+        update_canvas()
+        get_events()
+        frame = (frame + 1) % 8
+        delay(0.05)
+
 
 while True:
     make_character(132, 243, 203, 535)
