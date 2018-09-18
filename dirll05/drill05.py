@@ -27,6 +27,7 @@ def make_character(x, y, ch_x, ch_y):
 
 
 
+
 while True:
     make_character(132, 243, 203, 535)
     make_character(535, 470, 132, 243)
