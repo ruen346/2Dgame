@@ -1,20 +1,31 @@
 from pico2d import *
-import math
 
 open_canvas()
 
 grass = load_image('grass.png')
-character = load_image('character.png')
+character = load_image('animation_sheet.png')
+
+ch_x = 0
+ch_y = 0
 
 def move_x(x):
-    pass
+    frame = 0
+    if(ch_x < x):
+        while ch_x < x:
+            clear_canvas()
+            character.clip_draw(frame * 100, 100, 100, 100, x, ch_y)
+            update_canvas()
+            x += 1
+            delay(0.002)
+            frame = (frame+1) % 8
+            get_events()
 
 def move_y(y):
     pass
 
 def move_character(x, y):
-    move_x()
-    move_y()
+    move_x(x)
+    move_y(y)
 
 def move_character_return():
     pass
