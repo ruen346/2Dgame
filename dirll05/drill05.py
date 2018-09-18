@@ -10,6 +10,8 @@ ch_y = 0
 
 def move_x(x):
     frame = 0
+    global ch_x
+
     if(ch_x < x):
         while ch_x < x:
             clear_canvas()
@@ -19,7 +21,7 @@ def move_x(x):
             delay(0.002)
             frame = (frame+1) % 8
             get_events()
-            
+
     elif (ch_x >= x):
         while ch_x > x:
             clear_canvas()
@@ -29,6 +31,7 @@ def move_x(x):
             delay(0.002)
             frame = (frame + 1) % 8
             get_events()
+    ch_x = x
 
 def move_y(y):
     pass
