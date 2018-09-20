@@ -52,6 +52,7 @@ def handle_events():
 
 while running:
     handle_events()
+    
     clear_canvas()
 
     if count > 0:
