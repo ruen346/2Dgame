@@ -36,7 +36,19 @@ def click_mouse():
     make_character(mouse_x, mouse_y)
 
 def handle_events():
-    pass
+    global running
+    global mouse_x
+    global mouse_y
+    events = get_events()
+    for event in events:
+        if event.type == SDL_QUIT:
+            running = False
+        elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
+            running = False
+        elif event.type == SDL_MOUSEMOTION:
+            mouse_x, mouse_y = event.x, KPU_HEIGHT - 1 - event.y
+        elif event.type == SDL_MOUSEBUTTONDOWN:
+            click_mouse()
 
 while running:
     handle_events()
