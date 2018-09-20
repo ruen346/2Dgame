@@ -29,6 +29,7 @@ def make_character(x, y):
     count = 30
     go_x = (x - ch_x) / 30
     go_y = (y - ch_y) / 30
+    
 
 def click_mouse():
     global mouse_x
@@ -52,7 +53,7 @@ def handle_events():
 
 while running:
     handle_events()
-    
+
     clear_canvas()
 
     if count > 0:
