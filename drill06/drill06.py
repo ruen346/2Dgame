@@ -20,13 +20,22 @@ mouse_y = 0
 count = 0
 
 def make_character(x, y):
-    pass
+    global ch_x
+    global ch_y
+    global go_x
+    global go_y
+    global count
+
+    count = 30
+    go_x = (x - ch_x) / 30
+    go_y = (y - ch_y) / 30
 
 def click_mouse():
     make_character(mouse_x, mouse_y)
 
 def handle_events():
     pass
+
 while running:
     handle_events()
     clear_canvas()
