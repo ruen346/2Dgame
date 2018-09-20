@@ -31,6 +31,8 @@ def make_character(x, y):
     go_y = (y - ch_y) / 30
 
 def click_mouse():
+    global mouse_x
+    global mouse_y
     make_character(mouse_x, mouse_y)
 
 def handle_events():
