@@ -27,8 +27,28 @@ def click_mouse():
 
 def handle_events():
     pass
-
 while running:
+    handle_events()
+    clear_canvas()
+
+    if count > 0:
+        ch_x += go_x
+        ch_y += go_y
+        count -= 1
+
+    kpu.draw(KPU_WIDTH // 2, KPU_HEIGHT // 2)
+
+    if (go_x > 0):
+        character.clip_draw(frame * 100, 100, 100, 100, ch_x - 25, ch_y + 25)
+    else:
+        character.clip_draw(frame * 100, 0, 100, 100, ch_x - 25, ch_y + 25)
+
+    hand.draw(mouse_x, mouse_y)
+
+    update_canvas()
+    get_events()
+    frame = (frame + 1) % 8
+    delay(0.05)
     handle_events()
 
 close_canvas()
