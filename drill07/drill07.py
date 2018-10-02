@@ -16,16 +16,21 @@ ch_y = 0
 def go_character(p1,p2):
     pass
 
+size = 20
+points = [(random.randint(-500,500), random.randint(-350, 350)) for i in range(size)]
+n = 1
 
 while running:
 
     clear_canvas()
 
-    if (go_x > 0):
+    if (ch_x > points[n - 1]):
         character.clip_draw(frame * 100, 100, 100, 100, ch_x - 25, ch_y + 25)
     else:
         character.clip_draw(frame * 100, 0, 100, 100, ch_x - 25, ch_y + 25)
-    go_character(p1, p2)
+
+    go_character(points[n - 1], points[n])
+    n = (n + 1) % size
 
     update_canvas()
     get_events()
