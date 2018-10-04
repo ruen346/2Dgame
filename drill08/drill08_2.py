@@ -47,6 +47,19 @@ def go_character(p1,p2,p3,p4):
 
 
 
+size = 10
+points = [(random.randint(0, 1280), random.randint(0, 1024)) for i in range(size)]
+n = 1
 
+ch_x,ch_y = points[n-1]
+
+while running:
+
+    i,j = points[n]
+
+    go_character(points[n - 3], points[n - 2], points[n-1], points[n])
+    n = (n + 1) % size
+    if(fine < 10):
+        fine+=1
 
 close_canvas()
