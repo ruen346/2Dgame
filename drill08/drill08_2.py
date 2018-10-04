@@ -30,7 +30,20 @@ def go_character(p1,p2,p3,p4):
         ch_x = x2
         ch_y = y2
 
+        clear_canvas()
+        kpu.draw(1280 // 2, 1024 // 2)
+        if (p2[0] < p3[0]):
+            character.clip_draw(frame * 100, 100, 100, 100, ch_x - 25, ch_y + 25)
+        else:
+            character.clip_draw(frame * 100, 0, 100, 100, ch_x - 25, ch_y + 25)
 
+        for i in range(0,fine):
+            cx, cy = points[i]
+            character.clip_draw(0, 0, 100, 100, cx, cy)
+
+        update_canvas()
+        frame = (frame + 1) % 8
+        delay(0.02)
 
 
 
