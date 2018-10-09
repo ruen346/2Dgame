@@ -49,7 +49,10 @@ def handle_events():
 
 # initialization code
 open_canvas()
-
+team = [Boy() for i in range(11)]
+ball_team = [Ball() for i in range(20)]
+grass = Grass()
+running = True;
 
 # game main loop code
 while running:
