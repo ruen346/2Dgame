@@ -56,7 +56,26 @@ running = True;
 
 # game main loop code
 while running:
+    handle_events()
 
+    for boy in team:
+        boy.update()
+
+    for ball in ball_team:
+        ball.update()
+
+    clear_canvas()
+    grass.draw()
+
+    for boy in team:
+        boy.draw()
+
+    for ball in ball_team:
+        ball.draw()
+
+    update_canvas()
+
+    delay(0.05)
 
 # finalization code
 close_canvas()
