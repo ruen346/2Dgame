@@ -56,3 +56,9 @@ def update():
 
 
 def draw():
+    clear_canvas()
+
+
+    pauses.draw()
+
+    update_canvas()
