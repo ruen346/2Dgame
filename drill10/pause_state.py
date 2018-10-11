@@ -32,7 +32,8 @@ class Pause:
 
 
 def enter():
-
+    global pauses
+    pauses = Pause()
 
 
 def exit():
