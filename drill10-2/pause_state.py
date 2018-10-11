@@ -61,4 +61,5 @@ def draw():
     main_state.boy.draw()
     pauses.draw()
 
+
     update_canvas()
