@@ -17,7 +17,18 @@ font = None
 
 
 class Pause:
+    def __init__(self):
+        self.frame = 0
 
+    def update(self):
+        if self.frame == 50:
+            self.frame = 0
+        else:
+            self.frame += 1
+
+    def draw(self):
+        if self.frame > 25:
+            load_image('pause.png').draw(400, 400)
 
 
 def enter():
