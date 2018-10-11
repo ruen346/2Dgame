@@ -52,7 +52,7 @@ def handle_events():
 
 
 def update():
-
+    pauses.update()
 
 
 def draw():
