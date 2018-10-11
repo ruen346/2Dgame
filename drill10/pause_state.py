@@ -37,7 +37,8 @@ def enter():
 
 
 def exit():
-
+    global pauses
+    del (pauses)
 
 
 def handle_events():
