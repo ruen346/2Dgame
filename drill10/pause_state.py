@@ -57,7 +57,8 @@ def update():
 
 def draw():
     clear_canvas()
-
+    main_state.grass.draw()
+    main_state.boy.draw()
 
     pauses.draw()
 
