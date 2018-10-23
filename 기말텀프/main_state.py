@@ -13,6 +13,8 @@ import pause_state
 name = "MainState"
 
 image = None
+tile1 = None
+tile2 = None
 
 boy = None
 grass = None
@@ -54,8 +56,11 @@ def enter():
     boy = Boy()
     grass = Grass()
 
-    global image
+    global image, tile1, tile2
     image = load_image('main_title.png')
+    tile1 = load_image('tile2.png')
+    tile2 = load_image('tile3.png')
+
 
 
 def exit():
@@ -91,12 +96,14 @@ def draw():
     clear_canvas()
 
     image.draw(640, 360)
+
+    for i in range(0,16):
+        if game_framework.text2[i] == '0':
+            tile1.draw((i % 4) * 128, 720 - (i // 4) * 128)
+        elif game_framework.text2[i] == '1':
+            tile2.draw((i % 4) * 128, 720 - (i // 4) * 128)
+
     grass.draw()
     boy.draw()
 
     update_canvas()
-
-
-
-
-

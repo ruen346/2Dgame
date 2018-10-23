@@ -1,3 +1,8 @@
+f = open("map.txt", 'r')
+text = f.read()
+text2 = text.split()
+
+
 class GameState:
     def __init__(self, state):
         self.enter = state.enter

@@ -11,11 +11,16 @@
     <sprite>sprites\tile1_left_sp</sprite>
     <sprite>sprites\tile1_up_sp</sprite>
     <sprite>sprites\monster1_sp</sprite>
+    <sprite>sprites\sprite5</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
   <objects name="objects">
     <object>objects\object0</object>
+    <object>objects\object1</object>
+    <object>objects\object2</object>
+    <object>objects\object3</object>
+    <object>objects\object4</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
