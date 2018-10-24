@@ -21,6 +21,7 @@ tile1_left = None
 tile1_down = None
 
 boy = None
+monster1 = None
 pauses = None
 font = None
 
@@ -56,9 +57,33 @@ class Boy:
             self.image1.draw(self.x, self.y)
 
 
+class Monster1:
+    def __init__(self):
+        self.x, self.y = 0, 720-320
+        self.image = load_image('monster1.png')
+        self.move = 1
+
+    def update(self):
+        if self.move == 1 and self.x >= 576:
+            self.move = 2
+        elif self.move == 2 and self.y <= 720 - 576:
+            self.move = 3
+
+        if self.move == 1:
+            self.x += 1.5
+        elif self.move == 2:
+            self.y -= 1.5
+        elif self.move == 3:
+            self.x += 1.5
+
+    def draw(self):
+            self.image.draw(self.x, self.y)
+
+
 def enter():
-    global boy
+    global boy, monster1
     boy = Boy()
+    monster1 = Monster1()
 
     global image, tile1, tile2, tile3, tile1_up, tile1_left, tile1_down, tile4
     image = load_image('main_title.png')
@@ -77,11 +102,19 @@ def enter():
 
 
 def exit():
-    global boy
+    global boy, monster1
     del (boy)
+    del (monster1)
 
-    global image
+    global image, tile1, tile2, tile3, tile1_up, tile1_left, tile1_down, tile4
     del (image)
+    del (tile1)
+    del (tile2)
+    del (tile3)
+    del (tile1_up)
+    del (tile1_left)
+    del (tile1_down)
+    del (tile4)
 
 
 def pause():
@@ -124,6 +157,7 @@ def handle_events():
 
 def update():
     boy.update()
+    monster1.update()
 
 
 def draw():
@@ -162,6 +196,7 @@ def draw():
             tile1_left.draw((i % 10) * 128 + 160, 720 - (i // 10) * 128 - 32)
             tile1_down.draw((i % 10) * 128 + 96, 720 - (i // 10) * 128 + 32)
 
+    monster1.draw()
     boy.draw()
 
     update_canvas()
