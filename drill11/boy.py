@@ -13,6 +13,8 @@ key_event_table = {
     (SDL_KEYUP, SDLK_LEFT): LEFT_UP,
     (SDL_KEYDOWN, SDLK_SPACE): SPACE,
 
+    (SDL_KEYDOWN, SDLK_LSHIFT): DASH_DOWN,
+    (SDL_KEYUP, SDLK_LSHIFT): DASH_UP
 }
 
 # Boy States
