@@ -32,7 +32,6 @@
     <object>objects\object8</object>
     <object>objects\object9</object>
   </objects>
-  <timelines name="timelines"/>
   <rooms name="rooms">
     <room>rooms\room0</room>
   </rooms>
