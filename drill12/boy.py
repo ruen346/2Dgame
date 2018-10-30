@@ -124,7 +124,7 @@ class SleepState:
         else:
             boy.image.clip_composite_draw(int(boy.frame) * 100, 200, 100, 100, -3.141592 / 2, '', boy.x + 25, boy.y - 25, 100, 100)
 
-        boy.image.opacify(0.5)
+        boy.image.opacify(random.random())
         boy.image.clip_draw(int(boy.frame) * 100, 300, 100, 100, boy.x, boy.y)
         boy.image.opacify(1)
 
