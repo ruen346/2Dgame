@@ -109,6 +109,7 @@ class SleepState:
     def enter(boy, event):
         boy.frame = 0
         boy.degree = -90
+        boy.start = get_time()
 
     @staticmethod
     def exit(boy, event):
@@ -117,7 +118,8 @@ class SleepState:
     @staticmethod
     def do(boy):
         boy.frame = (boy.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 8
-        boy.degree += 1
+        now = (get_time() - boy.start) % 1
+        boy.degree = -90 + now * 720
 
     @staticmethod
     def draw(boy):
