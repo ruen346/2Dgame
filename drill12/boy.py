@@ -108,6 +108,7 @@ class SleepState:
     @staticmethod
     def enter(boy, event):
         boy.frame = 0
+        boy.degree = -90
 
     @staticmethod
     def exit(boy, event):
@@ -116,6 +117,7 @@ class SleepState:
     @staticmethod
     def do(boy):
         boy.frame = (boy.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 8
+        boy.degree += 1
 
     @staticmethod
     def draw(boy):
@@ -125,7 +127,7 @@ class SleepState:
             boy.image.clip_composite_draw(int(boy.frame) * 100, 200, 100, 100, -3.141592 / 2, '', boy.x + 25, boy.y - 25, 100, 100)
 
         boy.image.opacify(random.random())
-        boy.image.clip_draw(int(boy.frame) * 100, 300, 100, 100, boy.x, boy.y)
+        boy.image.clip_draw(int(boy.frame) * 100, 300, 100, 100, boy.x + math.cos(3.141592 * boy.degree / 180) * 100, boy.y + 100 + math.sin(3.141592 * boy.degree / 180) * 100)
         boy.image.opacify(1)
 
 
