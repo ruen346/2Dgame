@@ -86,7 +86,7 @@ def enter():
     monster1 = Monster1()
 
     global image, tile1, tile2, tile3, tile1_up, tile1_left, tile1_down, tile4
-    image = load_image('main_title.png')
+    image = load_image('tower1.png')
     tile1 = load_image("tile5.png")
     tile2 = load_image('tile2.png')
     tile3 = load_image('tile3.png')

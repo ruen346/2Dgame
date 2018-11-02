@@ -8,18 +8,24 @@ import game_world
 
 from boy import Boy
 from tile import Tile
+from monster1 import Monster1
 
 
 name = "MainState"
 
 boy = None
+monster1 = None
 
 def enter():
-    global boy
+    global boy, monster1
+
     boy = Boy()
     tile = Tile()
+    monster1 = Monster1()
+
     game_world.add_object(tile, 0)
     game_world.add_object(boy, 1)
+    game_world.add_object(monster1, 1)
 
 
 def exit():
