@@ -7,7 +7,7 @@ import game_framework
 import game_world
 
 from boy import Boy
-from grass import Grass
+from tile import Tile
 
 
 name = "MainState"
@@ -17,8 +17,8 @@ boy = None
 def enter():
     global boy
     boy = Boy()
-    grass = Grass()
-    game_world.add_object(grass, 0)
+    tile = Tile()
+    game_world.add_object(tile, 0)
     game_world.add_object(boy, 1)
 
 

@@ -1,3 +1,12 @@
+f = open("map.txt", 'r')
+text2s = f.read()
+text2 = text2s.split()
+
+f2 = open("map2.txt", 'r')
+text3s = f2.read()
+text3 = text3s.split()
+
+
 class GameState:
     def __init__(self, state):
         self.enter = state.enter

@@ -22,7 +22,7 @@ FRAMES_PER_ACTION = 8
 
 
 # Boy Event
-RIGHT_DOWN, LEFT_DOWN, RIGHT_UP, LEFT_UP, SLEEP_TIMER, SPACE = range(6)
+RIGHT_DOWN, LEFT_DOWN, RIGHT_UP, LEFT_UP, SPACE = range(5)
 
 key_event_table = {
     (SDL_KEYDOWN, SDLK_RIGHT): RIGHT_DOWN,
@@ -57,17 +57,11 @@ class IdleState:
 
     @staticmethod
     def do(boy):
-        boy.frame = (boy.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 8
-        #boy.timer -= 1
-        if get_time() - boy.timer >= 10:
-            boy.add_event(SLEEP_TIMER)
+        pass
 
     @staticmethod
     def draw(boy):
-        if boy.dir == 1:
-            boy.image.clip_draw(int(boy.frame) * 100, 300, 100, 100, boy.x, boy.y)
-        else:
-            boy.image.clip_draw(int(boy.frame) * 100, 200, 100, 100, boy.x, boy.y)
+        boy.image.draw(boy.x, boy.y)
 
 
 class RunState:
@@ -82,7 +76,6 @@ class RunState:
             boy.velocity -= RUN_SPEED_PPS
         elif event == LEFT_UP:
             boy.velocity += RUN_SPEED_PPS
-        boy.dir = clamp(-1, boy.velocity, 1)
 
     @staticmethod
     def exit(boy, event):
@@ -91,62 +84,17 @@ class RunState:
 
     @staticmethod
     def do(boy):
-        boy.frame = (boy.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 8
         boy.x += boy.velocity * game_framework.frame_time
         boy.x = clamp(25, boy.x, 1600 - 25)
 
     @staticmethod
     def draw(boy):
-        if boy.dir == 1:
-            boy.image.clip_draw(int(boy.frame) * 100, 100, 100, 100, boy.x, boy.y)
-        else:
-            boy.image.clip_draw(int(boy.frame) * 100, 0, 100, 100, boy.x, boy.y)
-
-
-class SleepState:
-
-    @staticmethod
-    def enter(boy, event):
-        boy.frame = 0
-        boy.degree = -90
-        boy.start = get_time()
-
-    @staticmethod
-    def exit(boy, event):
-        pass
-
-    @staticmethod
-    def do(boy):
-        boy.frame = (boy.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 8
-        now = (get_time() - boy.start) % 1
-        boy.degree = -90 + now * 720
-
-    @staticmethod
-    def draw(boy):
-        times = get_time() - boy.start
-
-        if boy.dir == 1:
-            boy.image.clip_composite_draw(int(boy.frame) * 100, 300, 100, 100, 3.141592 / 2, '', boy.x - 25, boy.y - 25, 100, 100)
-        else:
-            boy.image.clip_composite_draw(int(boy.frame) * 100, 200, 100, 100, -3.141592 / 2, '', boy.x + 25, boy.y - 25, 100, 100)
-
-        if get_time() - boy.start >= 1:
-            boy.image.opacify(random.random())
-            boy.image.clip_draw(int(boy.frame) * 100, 300, 100, 100, boy.x + math.cos(3.141592 * boy.degree / 180) * 100, boy.y + 100 + math.sin(3.141592 * boy.degree / 180) * 100)
-            boy.image.opacify(1)
-        else :
-            boy.image.opacify(random.random())
-            boy.image.clip_composite_draw(int(boy.frame) * 100, 300, 100, 100, 3.141592 / 2 - (3.141592 / 2 * times), '', boy.x - (1-times) * 25, boy.y - (1-times) * 25,100, 100)
-            boy.image.opacify(1)
-
-
-
+        boy.image.draw(boy.x, boy.y)
 
 
 next_state_table = {
-    IdleState: {RIGHT_UP: RunState, LEFT_UP: RunState, RIGHT_DOWN: RunState, LEFT_DOWN: RunState, SLEEP_TIMER: SleepState, SPACE: IdleState},
+    IdleState: {RIGHT_UP: RunState, LEFT_UP: RunState, RIGHT_DOWN: RunState, LEFT_DOWN: RunState, SPACE: IdleState},
     RunState: {RIGHT_UP: IdleState, LEFT_UP: IdleState, LEFT_DOWN: IdleState, RIGHT_DOWN: IdleState, SPACE: RunState},
-    SleepState: {LEFT_DOWN: RunState, RIGHT_DOWN: RunState, LEFT_UP: RunState, RIGHT_UP: RunState, SPACE: IdleState}
 }
 
 class Boy:
@@ -154,18 +102,16 @@ class Boy:
     def __init__(self):
         self.x, self.y = 1600 // 2, 90
         # Boy is only once created, so instance image loading is fine
-        self.image = load_image('animation_sheet.png')
+        self.image = load_image('character_right_stand0.png')
         self.font = load_font('ENCR10B.TTF', 16)
-        self.dir = 1
         self.velocity = 0
-        self.frame = 0
         self.event_que = []
         self.cur_state = IdleState
         self.cur_state.enter(self, None)
 
 
     def fire_ball(self):
-        ball = Ball(self.x, self.y, self.dir*3)
+        ball = Ball(self.x, self.y, 0)
         game_world.add_object(ball, 1)
 
 
