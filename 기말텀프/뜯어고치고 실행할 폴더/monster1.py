@@ -20,8 +20,6 @@ ACTION_PER_TIME = 1.0 / TIME_PER_ACTION
 FRAMES_PER_ACTION = 8
 
 
-# Boy States
-
 class IdleState:
 
     @staticmethod
@@ -34,7 +32,17 @@ class IdleState:
 
     @staticmethod
     def do(monster1):
-        pass
+        if monster1.move == 1 and monster1.x >= 576:
+            monster1.move = 2
+        elif monster1.move == 2 and monster1.y <= 720 - 576:
+            monster1.move = 3
+
+        if monster1.move == 1:
+            monster1.x += 1.5
+        elif monster1.move == 2:
+            monster1.y -= 1.5
+        elif monster1.move == 3:
+            monster1.x += 1.5
 
     @staticmethod
     def draw(monster1):
@@ -44,10 +52,9 @@ class IdleState:
 class Monster1:
 
     def __init__(self):
-        self.x, self.y = 0, 300
+        self.x, self.y = 0, 720-320
         self.image = load_image('monster1.png')
-        self.width = 0
-        self.high = 0
+        self.move = 1
         self.event_que = []
         self.cur_state = IdleState
         self.cur_state.enter(self, None)
