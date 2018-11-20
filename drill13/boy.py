@@ -83,6 +83,7 @@ class WalkingState:
         elif boy.x > 1640 + (185 * (1135 - boy.y) / 1065):
             boy.x = 1640 + (185 * (1135 - boy.y) / 1065)
 
+
         #boy.x = clamp(0, boy.x, boy.bg.w)
         #boy.y = clamp(0, boy.y, boy.bg.h)
 
