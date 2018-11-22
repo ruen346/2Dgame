@@ -9,7 +9,9 @@ class Ball:
     image = None
 
     def __init__(self):
-
+        if Ball.image == None:
+            Ball.image = load_image('ball21x21.png')
+        self.x, self.y, self.fall_speed = random.randint(450, 2050-1), random.randint(450, 1450-1), 0
 
     def get_bb(self):
 
