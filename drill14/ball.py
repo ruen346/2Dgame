@@ -17,7 +17,8 @@ class Ball:
         return self.x - 10 - main_state.boy.x, self.y - 10 - main_state.boy.y, self.x + 10 - main_state.boy.x, self.y - main_state.boy.y + 10
 
     def draw(self):
-
+        self.image.draw(self.x - main_state.boy.x, self.y - main_state.boy.y)
+        draw_rectangle(*self.get_bb())
 
     def update(self):
         pass
