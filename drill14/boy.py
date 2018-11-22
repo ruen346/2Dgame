@@ -139,7 +139,7 @@ class Boy:
         self.eat_num = 0
 
     def get_bb(self):
-
+        return 400 - 50, 300 - 50, 400 + 50, 300 + 50
 
 
     def set_background(self, bg):
@@ -160,7 +160,7 @@ class Boy:
 
     def draw(self):
         self.cur_state.draw(self)
-
+        
         draw_rectangle(*self.get_bb())
 
     def eat(self, ball):
