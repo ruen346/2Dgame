@@ -160,7 +160,7 @@ class Boy:
 
     def draw(self):
         self.cur_state.draw(self)
-        
+        self.font.draw(self.canvas_width//2 - 50, self.canvas_height//2 + 50, '(%5d num)' % (self.eat_num), (255, 255, 0))
         draw_rectangle(*self.get_bb())
 
     def eat(self, ball):
