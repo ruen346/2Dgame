@@ -14,7 +14,7 @@ class Ball:
         self.x, self.y, self.fall_speed = random.randint(450, 2050-1), random.randint(450, 1450-1), 0
 
     def get_bb(self):
-
+        return self.x - 10 - main_state.boy.x, self.y - 10 - main_state.boy.y, self.x + 10 - main_state.boy.x, self.y - main_state.boy.y + 10
 
     def draw(self):
 
