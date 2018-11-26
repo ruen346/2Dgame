@@ -51,7 +51,6 @@ def create_new_world():
         game_world.add_object(zombie, 1)
 
 
-
 def load_saved_world():
     global boy
 
