@@ -16,11 +16,11 @@ boy = None
 
 name = "WorldBuildState"
 
-menu = None
+rank = None
 
 def enter():
-    global menu
-    menu = load_image('menu.png')
+    global rank
+    rank = load_image('ranking_sp.png')
     hide_cursor()
     hide_lattice()
 
@@ -56,5 +56,5 @@ def update():
 
 def draw():
     clear_canvas()
-    menu.draw(get_canvas_width()//2, get_canvas_height()//2)
+    rank.draw(get_canvas_width()//2, get_canvas_height()//2)
     update_canvas()
