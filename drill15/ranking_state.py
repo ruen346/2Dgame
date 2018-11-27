@@ -6,6 +6,7 @@ import os
 from pico2d import *
 import game_framework
 import game_world
+import world_build_state
 
 import main_state
 
@@ -43,7 +44,7 @@ def handle_events():
         if event.type == SDL_QUIT:
             game_framework.quit()
         elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
-                game_framework.quit()
+            game_framework.change_state(world_build_state)
         elif event.type == SDL_KEYDOWN and event.key == SDLK_n:
             game_framework.change_state(main_state)
         elif event.type == SDL_KEYDOWN and event.key == SDLK_l:
