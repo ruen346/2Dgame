@@ -62,8 +62,9 @@ def load_saved_world():
 
     f = open("rank.json")
     y = json.load(f)
-    print(y)
-    print(y)
+    yy = y['rank']
+    for i in range(0,10):
+        game_framework.ranking_score[i] = yy[i]
 
 def handle_events():
     events = get_events()

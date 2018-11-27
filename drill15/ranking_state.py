@@ -25,10 +25,11 @@ def enter():
     rank = load_image('ranking_sp.png')
     hide_cursor()
     hide_lattice()
+
     file_data["rank"] = (game_framework.ranking_score[0],game_framework.ranking_score[1],game_framework.ranking_score[2],
                          game_framework.ranking_score[3],game_framework.ranking_score[4],game_framework.ranking_score[5],
                          game_framework.ranking_score[6],game_framework.ranking_score[7],game_framework.ranking_score[8],
-                         game_framework.ranking_score[9],)
+                         game_framework.ranking_score[9])
     with open('rank.json', 'w', encoding = "utf-8") as make_file:
         json.dump(file_data, make_file, ensure_ascii=False, indent = "\t")
 
