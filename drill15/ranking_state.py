@@ -49,6 +49,7 @@ def handle_events():
         elif event.type == SDL_KEYDOWN and event.key == SDLK_l:
             game_framework.change_state(main_state)
 
+
 def update():
     pass
 
