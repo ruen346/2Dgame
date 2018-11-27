@@ -2,6 +2,9 @@ import random
 import json
 import pickle
 import os
+from collections import OrderedDict
+
+file_data = OrderedDict()
 
 from pico2d import *
 import game_framework
@@ -22,8 +25,15 @@ def enter():
     rank = load_image('ranking_sp.png')
     hide_cursor()
     hide_lattice()
+    file_data["rank"] = (game_framework.ranking_score[0],game_framework.ranking_score[1],game_framework.ranking_score[2],
+                         game_framework.ranking_score[3],game_framework.ranking_score[4],game_framework.ranking_score[5],
+                         game_framework.ranking_score[6],game_framework.ranking_score[7],game_framework.ranking_score[8],
+                         game_framework.ranking_score[9],)
+    with open('rank.json', 'w', encoding = "utf-8") as make_file:
+        json.dump(file_data, make_file, ensure_ascii=False, indent = "\t")
 
 def exit():
+    pass
 
 def pause():
     pass
@@ -42,10 +52,6 @@ def handle_events():
             game_framework.quit()
         elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
             game_framework.change_state(world_build_state)
-        elif event.type == SDL_KEYDOWN and event.key == SDLK_n:
-            game_framework.change_state(main_state)
-        elif event.type == SDL_KEYDOWN and event.key == SDLK_l:
-            game_framework.change_state(main_state)
 
 
 def update():

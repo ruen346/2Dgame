@@ -60,6 +60,10 @@ def load_saved_world():
             boy = o
             break
 
+    f = open("rank.json")
+    y = json.load(f)
+    print(y)
+    print(y)
 
 def handle_events():
     events = get_events()

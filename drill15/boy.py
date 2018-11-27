@@ -161,15 +161,15 @@ class Boy:
         for game_object in game_world.all_objects():
             if str(game_object).find("zombie") != -1: # shot_arrow와 충돌시
                 if game_object.x > self.x - 64 and game_object.x < self.x + 64 and game_object.y < self.y + 64 and  game_object.y > self.y - 64:
-                    game_framework.change_state(ranking_state)
-
-                    game_framework.ranking_score[10] = self.start_time
+                    game_framework.ranking_score[10] = get_time() - self.start_time
                     for j in range(0,10):
                         for i in range(0, 10):
                             if game_framework.ranking_score[i] < game_framework.ranking_score[i+1]:
                                 a = game_framework.ranking_score[i]
                                 game_framework.ranking_score[i] = game_framework.ranking_score[i+1]
                                 game_framework.ranking_score[i+1] = a
+
+                    game_framework.change_state(ranking_state)
 
 
 
