@@ -1,3 +1,8 @@
+ranking_score = [None, None, None, None, None, None, None, None, None, None,]
+
+
+
+
 class GameState:
     def __init__(self, state):
         self.enter = state.enter
