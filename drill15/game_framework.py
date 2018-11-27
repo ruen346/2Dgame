@@ -1,4 +1,4 @@
-ranking_score = [None, None, None, None, None, None, None, None, None, None,]
+ranking_score = [int(0), int(0), int(0), int(0), int(0), int(0), int(0), int(0), int(0), int(0), int(0)]
 
 
 

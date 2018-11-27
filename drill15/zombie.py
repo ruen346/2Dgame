@@ -101,11 +101,6 @@ class Zombie:
         self.x = clamp(50, self.x, get_canvas_width() - 50)
         self.y = clamp(50, self.y, get_canvas_height() - 50)
 
-        for game_object in game_world.all_objects():
-            if str(game_object).find("boy") != -1: # shot_arrow와 충돌시
-                if game_object.x > self.x - 64 and game_object.x < self.x + 64 and game_object.y < self.y + 64 and  game_object.y > self.y - 64:
-                    game_framework.change_state(ranking_state)
-
     def draw(self):
         tw, th = int(100*self.size), int(100*self.size)
         if math.cos(self.dir) < 0:

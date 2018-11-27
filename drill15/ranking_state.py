@@ -24,8 +24,6 @@ def enter():
     hide_lattice()
 
 def exit():
-    global menu
-    del menu
 
 def pause():
     pass
